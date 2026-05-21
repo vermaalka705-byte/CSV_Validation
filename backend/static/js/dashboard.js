@@ -1,24 +1,25 @@
 const menuToggle = document.getElementById("menuToggle");
 const sidebar = document.getElementById("sidebar");
+const contentArea = document.getElementById("content-area");
 const userAvatar = document.getElementById("userAvatar");
 const dropdownMenu = document.getElementById("dropdownMenu");
-const contentArea = document.getElementById("content-area");
 
 menuToggle.addEventListener("click", () => {
     sidebar.classList.toggle("collapsed");
 });
 
-userAvatar.addEventListener("click", (e) => {
-    e.stopPropagation();
-    dropdownMenu.classList.toggle("show");
-});
-
-document.addEventListener("click", () => {
-    dropdownMenu.classList.remove("show");
-});
+async function loadPage(page) {
+    try {
+        const response = await fetch(`/static/pages/${page}.html`);
+        const html = await response.text();
+        contentArea.innerHTML = html;
+    } catch {
+        contentArea.innerHTML = "<h2>Module Coming Soon</h2>";
+    }
+}
 
 document.querySelectorAll(".nav-link").forEach(link => {
-    link.addEventListener("click", function(e) {
+    link.addEventListener("click", function (e) {
         e.preventDefault();
 
         document.querySelectorAll(".nav-link").forEach(nav => {
@@ -27,13 +28,17 @@ document.querySelectorAll(".nav-link").forEach(link => {
 
         this.classList.add("active");
 
-        const moduleName = this.textContent;
-
-        contentArea.innerHTML = `
-            <div class="module-card">
-                <h1>${moduleName}</h1>
-                <p>Module page under development.</p>
-            </div>
-        `;
+        loadPage(this.dataset.page);
     });
 });
+
+userAvatar.addEventListener("click", function (e) {
+    e.stopPropagation();
+    dropdownMenu.classList.toggle("show");
+});
+
+document.addEventListener("click", function () {
+    dropdownMenu.classList.remove("show");
+});
+
+loadPage("dashboard");
