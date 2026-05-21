@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validation DMS</title>
+    <link rel="stylesheet" href="../css/base.css">
+</head>
+<body>
+
+    <div class="animated-bg"></div>
+    <div class="grid-overlay"></div>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+
+        <div class="logo-box">
+            <img src="../assets/logo.svg" alt="logo">
+            <span>Validation DMS</span>
+        </div>
+
+        <nav>
+            <a href="#" data-page="dashboard" class="nav-link active">Dashboard</a>
+            <a href="#" data-page="users" class="nav-link">Users</a>
+            <a href="#" data-page="roles" class="nav-link">Roles</a>
+            <a href="#" data-page="permissions" class="nav-link">Permissions</a>
+            <a href="#" data-page="documents" class="nav-link">Documents</a>
+            <a href="#" data-page="workflows" class="nav-link">Workflows</a>
+            <a href="#" data-page="audit" class="nav-link">Audit Logs</a>
+        </nav>
+
+    </aside>
+
+    <!-- MAIN -->
+    <div class="main-layout">
+
+        <!-- TOPBAR -->
+        <header class="topbar">
+
+            <button id="menuToggle">☰</button>
+
+            <div class="top-right">
+
+                <div class="notification">🔔</div>
+
+                <div class="user-dropdown">
+
+                    <div class="user-avatar" id="userAvatar">
+                        AU
+                    </div>
+
+                    <div class="dropdown-menu" id="dropdownMenu">
+                        <a href="#">Profile</a>
+                        <a href="#">Settings</a>
+                        <a href="#" id="logoutBtn">Logout</a>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+        <!-- CONTENT -->
+        <main id="content-area"></main>
+
+        <!-- FOOTER -->
+        <footer>
+            Validation DMS © 2026 | Enterprise Document Management System
+        </footer>
+
+    </div>
+
+    <script src="../js/base.js"></script>
+
+</body>
+</html>

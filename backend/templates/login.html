@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validation DMS Login</title>
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+
+    <!-- LOADER -->
+    <div id="loader">
+        <div class="cube-container">
+            <div class="cube">
+                <div class="face front"></div>
+                <div class="face back"></div>
+                <div class="face right"></div>
+                <div class="face left"></div>
+                <div class="face top"></div>
+                <div class="face bottom"></div>
+            </div>
+        </div>
+        <p class="loader-text">Initializing Validation Environment...</p>
+    </div>
+
+    <!-- BACKGROUND -->
+    <div class="animated-bg"></div>
+    <div class="grid-overlay"></div>
+
+    <!-- LOGIN -->
+    <div class="login-wrapper hidden" id="loginWrapper">
+
+        <div class="login-card">
+
+            <div class="logo-section">
+                <img src="assets/logo.svg" alt="Logo">
+                <h1>Validation DMS</h1>
+                <p>Enterprise Document Management System</p>
+            </div>
+
+            <form id="loginForm">
+
+                <div class="input-group">
+                    <input type="text" id="username" required>
+                    <label>Username</label>
+                </div>
+
+                <div class="input-group">
+                    <input type="password" id="password" required>
+                    <label>Password</label>
+                    <span class="toggle-password" id="togglePassword">👁</span>
+                </div>
+
+                <button type="submit">SIGN IN</button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <script src="js/login.js"></script>
+
+</body>
+</html>
