@@ -113,6 +113,9 @@ body {
     align-items: center;
     justify-content: space-between;
     padding: 0 30px;
+    position: relative;
+    z-index: 1000;
+    overflow: visible;
 }
 
 #menuToggle {
