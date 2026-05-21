@@ -1,21 +1,24 @@
 const menuToggle = document.getElementById("menuToggle");
 const sidebar = document.getElementById("sidebar");
-const contentArea = document.getElementById("content-area");
 const userAvatar = document.getElementById("userAvatar");
 const dropdownMenu = document.getElementById("dropdownMenu");
+const contentArea = document.getElementById("content-area");
 
 menuToggle.addEventListener("click", () => {
     sidebar.classList.toggle("collapsed");
 });
 
-async function loadPage(page) {
-    const response = await fetch(`/static/pages/${page}.html`);
-    const html = await response.text();
-    contentArea.innerHTML = html;
-}
+userAvatar.addEventListener("click", (e) => {
+    e.stopPropagation();
+    dropdownMenu.classList.toggle("show");
+});
+
+document.addEventListener("click", () => {
+    dropdownMenu.classList.remove("show");
+});
 
 document.querySelectorAll(".nav-link").forEach(link => {
-    link.addEventListener("click", function (e) {
+    link.addEventListener("click", function(e) {
         e.preventDefault();
 
         document.querySelectorAll(".nav-link").forEach(nav => {
@@ -24,18 +27,13 @@ document.querySelectorAll(".nav-link").forEach(link => {
 
         this.classList.add("active");
 
-        loadPage(this.dataset.page);
+        const moduleName = this.textContent;
+
+        contentArea.innerHTML = `
+            <div class="module-card">
+                <h1>${moduleName}</h1>
+                <p>Module page under development.</p>
+            </div>
+        `;
     });
 });
-
-userAvatar.addEventListener("click", () => {
-    dropdownMenu.classList.toggle("show");
-});
-
-document.addEventListener("click", function (e) {
-    if (!userAvatar.contains(e.target) && !dropdownMenu.contains(e.target)) {
-        dropdownMenu.classList.remove("show");
-    }
-});
-
-loadPage("dashboard");

@@ -1,21 +1,39 @@
-window.addEventListener("load", function () {
-    setTimeout(() => {
-        document.getElementById("loader").style.display = "none";
+const menuToggle = document.getElementById("menuToggle");
+const sidebar = document.getElementById("sidebar");
+const userAvatar = document.getElementById("userAvatar");
+const dropdownMenu = document.getElementById("dropdownMenu");
+const contentArea = document.getElementById("content-area");
 
-        const login = document.getElementById("loginWrapper");
-        login.classList.remove("hidden");
-        login.classList.add("show");
-    }, 3500);
+menuToggle.addEventListener("click", () => {
+    sidebar.classList.toggle("collapsed");
 });
 
-const togglePassword = document.getElementById("togglePassword");
-const password = document.getElementById("password");
-
-togglePassword.addEventListener("click", () => {
-    password.type = password.type === "password" ? "text" : "password";
+userAvatar.addEventListener("click", (e) => {
+    e.stopPropagation();
+    dropdownMenu.classList.toggle("show");
 });
 
-document.getElementById("loginForm").addEventListener("submit", function(e){
-    e.preventDefault();
-    window.location.href = "/dashboard";
+document.addEventListener("click", () => {
+    dropdownMenu.classList.remove("show");
+});
+
+document.querySelectorAll(".nav-link").forEach(link => {
+    link.addEventListener("click", function(e) {
+        e.preventDefault();
+
+        document.querySelectorAll(".nav-link").forEach(nav => {
+            nav.classList.remove("active");
+        });
+
+        this.classList.add("active");
+
+        const moduleName = this.textContent;
+
+        contentArea.innerHTML = `
+            <div class="module-card">
+                <h1>${moduleName}</h1>
+                <p>Module page under development.</p>
+            </div>
+        `;
+    });
 });

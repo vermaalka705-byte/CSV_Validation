@@ -182,3 +182,55 @@ footer {
     justify-content: center;
     color: #9eb6cf;
 }
+.user-dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 55px;
+    right: 0;
+    background: rgba(8, 16, 30, 0.95);
+    border: 1px solid rgba(0,255,255,0.2);
+    border-radius: 12px;
+    min-width: 160px;
+    display: none;
+    flex-direction: column;
+    z-index: 1000;
+    box-shadow: 0 0 20px rgba(0,255,255,0.1);
+}
+
+.dropdown-menu.show {
+    display: flex;
+}
+
+.dropdown-menu a {
+    padding: 14px 18px;
+    color: cyan;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.dropdown-menu a:hover {
+    background: rgba(0,255,255,0.08);
+}
+
+.welcome-dashboard,
+.module-card {
+    text-align: center;
+    padding: 80px;
+    color: white;
+}
+
+.welcome-dashboard h1,
+.module-card h1 {
+    font-size: 42px;
+    color: cyan;
+    margin-bottom: 20px;
+}
+
+.welcome-dashboard p,
+.module-card p {
+    font-size: 18px;
+    color: #b8d6f1;
+}
