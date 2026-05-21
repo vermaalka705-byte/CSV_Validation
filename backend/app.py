@@ -3,7 +3,12 @@ from flask_cors import CORS
 from config import Config
 from extensions import db, jwt, migrate
 
-app = Flask(__name__)
+app = Flask(
+    __name__,
+    template_folder="templates",
+    static_folder="static"
+)
+
 app.config.from_object(Config)
 
 CORS(app)
@@ -24,4 +29,4 @@ def dashboard():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=5000)

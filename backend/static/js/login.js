@@ -12,14 +12,10 @@ const togglePassword = document.getElementById("togglePassword");
 const password = document.getElementById("password");
 
 togglePassword.addEventListener("click", () => {
-    if (password.type === "password") {
-        password.type = "text";
-    } else {
-        password.type = "password";
-    }
+    password.type = password.type === "password" ? "text" : "password";
 });
 
 document.getElementById("loginForm").addEventListener("submit", function(e){
     e.preventDefault();
-    alert("Frontend login connected later with Flask API");
+    window.location.href = "/dashboard";
 });

@@ -4,18 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Validation DMS</title>
-    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
 </head>
 <body>
 
     <div class="animated-bg"></div>
     <div class="grid-overlay"></div>
 
-    <!-- SIDEBAR -->
     <aside class="sidebar" id="sidebar">
 
         <div class="logo-box">
-            <img src="../assets/logo.svg" alt="logo">
+            <img src="{{ url_for('static', filename='assets/logo.svg') }}">
             <span>Validation DMS</span>
         </div>
 
@@ -31,47 +30,37 @@
 
     </aside>
 
-    <!-- MAIN -->
     <div class="main-layout">
 
-        <!-- TOPBAR -->
         <header class="topbar">
 
             <button id="menuToggle">☰</button>
 
             <div class="top-right">
-
                 <div class="notification">🔔</div>
 
                 <div class="user-dropdown">
-
-                    <div class="user-avatar" id="userAvatar">
-                        AU
-                    </div>
+                    <div class="user-avatar" id="userAvatar">AU</div>
 
                     <div class="dropdown-menu" id="dropdownMenu">
                         <a href="#">Profile</a>
                         <a href="#">Settings</a>
-                        <a href="#" id="logoutBtn">Logout</a>
+                        <a href="/" id="logoutBtn">Logout</a>
                     </div>
-
                 </div>
-
             </div>
 
         </header>
 
-        <!-- CONTENT -->
         <main id="content-area"></main>
 
-        <!-- FOOTER -->
         <footer>
             Validation DMS © 2026 | Enterprise Document Management System
         </footer>
 
     </div>
 
-    <script src="../js/base.js"></script>
+    <script src="{{ url_for('static', filename='js/base.js') }}"></script>
 
 </body>
 </html>

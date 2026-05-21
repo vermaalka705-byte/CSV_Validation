@@ -4,11 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Validation DMS Login</title>
-    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
 </head>
 <body>
 
-    <!-- LOADER -->
     <div id="loader">
         <div class="cube-container">
             <div class="cube">
@@ -23,23 +22,20 @@
         <p class="loader-text">Initializing Validation Environment...</p>
     </div>
 
-    <!-- BACKGROUND -->
     <div class="animated-bg"></div>
     <div class="grid-overlay"></div>
 
-    <!-- LOGIN -->
     <div class="login-wrapper hidden" id="loginWrapper">
 
         <div class="login-card">
 
             <div class="logo-section">
-                <img src="assets/logo.svg" alt="Logo">
+                <img src="{{ url_for('static', filename='assets/logo.svg') }}">
                 <h1>Validation DMS</h1>
                 <p>Enterprise Document Management System</p>
             </div>
 
             <form id="loginForm">
-
                 <div class="input-group">
                     <input type="text" id="username" required>
                     <label>Username</label>
@@ -52,14 +48,13 @@
                 </div>
 
                 <button type="submit">SIGN IN</button>
-
             </form>
 
         </div>
 
     </div>
 
-    <script src="js/login.js"></script>
+    <script src="{{ url_for('static', filename='js/login.js') }}"></script>
 
 </body>
 </html>
