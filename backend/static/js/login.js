@@ -5,33 +5,49 @@ document.addEventListener("DOMContentLoaded", function () {
     const togglePassword = document.getElementById("togglePassword");
     const password = document.getElementById("password");
     const loginForm = document.getElementById("loginForm");
+    const errorMsg = document.getElementById("errorMsg");
 
-    // hide loader
-    setTimeout(function () {
+    setTimeout(() => {
         loader.style.display = "none";
-
-        loginWrapper.classList.remove("hidden");
         loginWrapper.classList.add("show");
+    }, 2500);
 
-    }, 3500);
+    togglePassword.addEventListener("click", function () {
+        password.type = password.type === "password" ? "text" : "password";
+    });
 
-    // password toggle
-    if (togglePassword && password) {
-        togglePassword.addEventListener("click", function () {
-            if (password.type === "password") {
-                password.type = "text";
+    loginForm.addEventListener("submit", async function (e) {
+        e.preventDefault();
+
+        const email = document.getElementById("email").value;
+        const passwordValue = document.getElementById("password").value;
+
+        try {
+            const response = await fetch("/api/auth/login", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    email: email,
+                    password: passwordValue
+                })
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                localStorage.setItem("jwt_token", data.token);
+                localStorage.setItem("user_name", data.user.name);
+
+                window.location.href = "/dashboard";
             } else {
-                password.type = "password";
+                errorMsg.textContent = data.message;
             }
-        });
-    }
 
-    // login redirect
-    if (loginForm) {
-        loginForm.addEventListener("submit", function (e) {
-            e.preventDefault();
-            window.location.href = "/dashboard";
-        });
-    }
+        } catch (error) {
+            errorMsg.textContent = "Login failed.";
+        }
+    });
 
 });

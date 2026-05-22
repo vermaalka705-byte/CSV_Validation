@@ -25,20 +25,20 @@
     <div class="animated-bg"></div>
     <div class="grid-overlay"></div>
 
-    <div class="login-wrapper hidden" id="loginWrapper">
+    <div class="login-wrapper" id="loginWrapper">
 
         <div class="login-card">
 
             <div class="logo-section">
                 <img src="{{ url_for('static', filename='assets/logo.svg') }}">
                 <h1>Validation DMS</h1>
-                <p>Enterprise Document Management System</p>
+                <p>Enterprise Pharma eQMS Platform</p>
             </div>
 
             <form id="loginForm">
                 <div class="input-group">
-                    <input type="text" id="username" required>
-                    <label>Username</label>
+                    <input type="email" id="email" required>
+                    <label>Email</label>
                 </div>
 
                 <div class="input-group">
@@ -49,6 +49,8 @@
 
                 <button type="submit">SIGN IN</button>
             </form>
+
+            <p id="errorMsg" style="color:red; text-align:center; margin-top:15px;"></p>
 
         </div>
 

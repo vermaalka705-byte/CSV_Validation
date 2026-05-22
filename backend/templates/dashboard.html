@@ -12,27 +12,21 @@
     <div class="grid-overlay"></div>
 
     <aside class="sidebar" id="sidebar">
+
         <div class="logo-box">
-            <img src="{{ url_for('static', filename='assets/logo.svg') }}" alt="Logo">
+            <img src="{{ url_for('static', filename='assets/logo.svg') }}">
             <span>Validation DMS</span>
         </div>
 
-        <nav>
-            <a href="#" data-page="dashboard" class="nav-link active">QMS</a>
-            <a href="#" data-page="change_control" class="nav-link">Change Control</a>
-            <a href="#" data-page="training" class="nav-link">Technical Training</a>
-            <a href="#" data-page="csv" class="nav-link">Computer System Validation</a>
-            <a href="#" data-page="process_validation" class="nav-link">Process Validation</a>
-            <a href="#" data-page="equipment_validation" class="nav-link">Equipment Qualification</a>
-            <a href="#" data-page="vendor_validation" class="nav-link">Vendor Qualification</a>
-            <a href="#" data-page="market_complaint" class="nav-link">Market Complaint</a>
-            <a href="#" data-page="maintenance" class="nav-link">Preventive Maintenance</a>
+        <nav id="moduleNav">
         </nav>
+
     </aside>
 
     <div class="main-layout">
 
         <header class="topbar">
+
             <button id="menuToggle">☰</button>
 
             <div class="top-right">
@@ -42,23 +36,17 @@
                     <div class="user-avatar" id="userAvatar">AU</div>
 
                     <div class="dropdown-menu" id="dropdownMenu">
-                        <a href="#">Profile</a>
-                        <a href="#">Settings</a>
-                        <a href="/">Logout</a>
+                        <a href="#" id="logoutBtn">Logout</a>
                     </div>
                 </div>
             </div>
+
         </header>
 
-        <main id="content-area">
-            <div class="welcome-dashboard">
-                <h1>Welcome to Validation DMS</h1>
-                <p>Select a module from the left sidebar to continue.</p>
-            </div>
-        </main>
+        <main id="content-area"></main>
 
         <footer>
-            Validation DMS © 2026 | Enterprise Document Management System
+            Validation DMS © 2026
         </footer>
 
     </div>
