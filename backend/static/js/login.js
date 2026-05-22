@@ -1,63 +1,37 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-    const menuToggle = document.getElementById("menuToggle");
-    const sidebar = document.getElementById("sidebar");
-    const userAvatar = document.getElementById("userAvatar");
-    const dropdownMenu = document.getElementById("dropdownMenu");
-    const contentArea = document.getElementById("content-area");
+    const loader = document.getElementById("loader");
+    const loginWrapper = document.getElementById("loginWrapper");
+    const togglePassword = document.getElementById("togglePassword");
+    const password = document.getElementById("password");
+    const loginForm = document.getElementById("loginForm");
 
-    // Sidebar toggle
-    if (menuToggle && sidebar) {
-        menuToggle.addEventListener("click", () => {
-            sidebar.classList.toggle("collapsed");
-        });
-    }
+    // hide loader
+    setTimeout(function () {
+        loader.style.display = "none";
 
-    // User dropdown
-    if (userAvatar && dropdownMenu) {
-        userAvatar.addEventListener("click", function (e) {
-            e.stopPropagation();
-            dropdownMenu.classList.toggle("show");
-        });
+        loginWrapper.classList.remove("hidden");
+        loginWrapper.classList.add("show");
 
-        document.addEventListener("click", function () {
-            dropdownMenu.classList.remove("show");
-        });
-    }
+    }, 3500);
 
-    // Module cards
-    document.querySelectorAll(".nav-link").forEach(link => {
-        link.addEventListener("click", function (e) {
-            e.preventDefault();
-
-            document.querySelectorAll(".nav-link").forEach(nav => {
-                nav.classList.remove("active");
-            });
-
-            this.classList.add("active");
-
-            const moduleName = this.textContent.trim();
-
-            if (contentArea) {
-                contentArea.innerHTML = `
-                    <div class="module-card">
-                        <div class="module-glow"></div>
-                        <h1>${moduleName}</h1>
-                        <p>Module page under development.</p>
-                    </div>
-                `;
+    // password toggle
+    if (togglePassword && password) {
+        togglePassword.addEventListener("click", function () {
+            if (password.type === "password") {
+                password.type = "text";
+            } else {
+                password.type = "password";
             }
         });
-    });
+    }
 
-    // Default dashboard content
-    if (contentArea) {
-        contentArea.innerHTML = `
-            <div class="dashboard-welcome">
-                <h1>Welcome to Validation DMS</h1>
-                <p>Select a module from the sidebar to continue.</p>
-            </div>
-        `;
+    // login redirect
+    if (loginForm) {
+        loginForm.addEventListener("submit", function (e) {
+            e.preventDefault();
+            window.location.href = "/dashboard";
+        });
     }
 
 });
